@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 from .crud_utilities import read_from_postgres
+import pandas as pd
 
 
 def plot_hires_per_tech():
