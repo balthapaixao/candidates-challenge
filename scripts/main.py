@@ -7,7 +7,7 @@ def main():
     df = pd.read_csv("../data/candidates.csv", sep=";")
     df_t = transform(df=df)
 
-    insert_into_table(df=df_t, table_name="candidates")
+    insert_into_table(df=df_t, table_name="SCORES")
 
 
 if __name__ == "__main__":
