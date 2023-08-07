@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 # Transform
 def rename_columns(columns: list) -> list:
     return [col.replace(" ", "_") for col in columns]

@@ -3,9 +3,6 @@ from dotenv import load_dotenv
 import os
 import psycopg2
 from contextlib import contextmanager
-import psycopg2
-import numpy as np
-import psycopg2.extras as extras
 
 load_dotenv()
 
@@ -34,7 +31,7 @@ def execute_values(conn: psycopg2.connect, df: pd.DataFrame, table: str):
     query = "INSERT INTO %s(%s) VALUES %%s" % (table, cols)
     cursor = conn.cursor()
     try:
-        extras.execute_values(cursor, query, tuples)
+        psycopg2.extras.execute_values(cursor, query, tuples)
         conn.commit()
     except (Exception, psycopg2.DatabaseError) as error:
         print("Error: %s" % error)
