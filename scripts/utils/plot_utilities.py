@@ -122,3 +122,10 @@ ORDER BY
 
     plt.title("Hires over years")
     plt.savefig("../../data/plots/hires_per_country.png")
+
+
+def main_plots():
+    plot_hires_per_tech()
+    hires_per_year()
+    hires_per_seniority()
+    hires_per_country()
