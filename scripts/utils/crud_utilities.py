@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import psycopg2
 from contextlib import contextmanager
+import psycopg2.extras
 
 load_dotenv()
 
@@ -12,9 +13,9 @@ load_dotenv()
 def get_postgres_cnx() -> psycopg2.connect:
     try:
         cnx = psycopg2.connect(
-            dbname="fullstack",
-            user="balthapaixao",  # os.getenv("DE_POSTGRES_USER"),
-            password=os.getenv("DE_POSTGRES_PASSWORD"),
+            dbname="hire_co_inc",
+            user=os.getenv("POSTGRES_USER"),
+            password=os.getenv("POSTGRES_PASSWORD"),
             host="localhost",
             port=5432,
         )
