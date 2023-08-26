@@ -1,0 +1,24 @@
+Pull image
+    sudo docker pull postgres
+Create .env file
+    POSTGRES_USER=balthapaixao
+    POSTGRES_PASSWORD=<the_password>
+    POSTGRES_HOST=localhost
+    POSTGRES_PORT=5432
+
+Start postgres docker 
+    sudo docker run --name hire_co_inc_challenge --env-file .env -p 5432:5432 -d postgres
+
+Create database
+    sudo docker exec -it hire_co_inc_challenge psql -U balthapaixao -c "CREATE DATABASE hire_co_inc"
+
+Create schemas
+    sudo docker exec -it hire_co_inc_challenge psql -U balthapaixao -c "CREATE SCHEMA candidates"
+
+create users via terminal
+    sudo docker exec -it hire_co_inc_challenge psql -U balthapaixao -c "CREATE USER data_engineer WITH PASSWORD '<the_password>'"
+grant permissions
+    sudo docker exec -it hire_co_inc_challenge psql -U balthapaixao -c "GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA candidates TO data_engineer"
+    sudo docker exec -it hire_co_inc_challenge psql -U balthapaixao -c "GRANT USAGE ON SCHEMA candidates TO data_engineer"
+list all users
+    sudo docker exec -it hire_co_inc_challenge psql -U balthapaixao -c "\du"
